@@ -18,8 +18,8 @@ def main():
     elif len(sys.argv) == 3 and sys.argv[2] == "--verbose":
         verbose_flag = True
 
-    else:
-        userPrompt = sys.argv[1]
+
+    userPrompt = sys.argv[1]
 
     message = [
         types.Content(role="user", parts=[types.Part(text=userPrompt)])
@@ -45,4 +45,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+
