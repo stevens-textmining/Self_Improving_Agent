@@ -16,14 +16,14 @@ def call_function(function_call_part, verbose = False):
     result = ""
     if function_call_part.name == "get_files_info":
         result = get_files_info(working_directory, **function_call_part.args)
-    if function_call_part.name == "get_file_content":
+    elif function_call_part.name == "get_file_content":
         result = get_file_content(working_directory, **function_call_part.args)
-    if function_call_part.name == "run_python_file":
+    elif function_call_part.name == "run_python_file":
         result = run_python_file(working_directory, **function_call_part.args)
-    if function_call_part.name == "write_file":
+    elif function_call_part.name == "write_file":
         result = write_file(working_directory, **function_call_part.args)
 
-    if result == "":
+    elif result == "":
         return types.Content(
             role="tool",
             parts=[

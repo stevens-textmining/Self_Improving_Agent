@@ -61,17 +61,20 @@ def main():
     )
 
     config = types.GenerateContentConfig(
-        tools = [available_functions], system_instruction=system_prompt)
+        tools = [available_functions], system_instruction=system_prompt
+    )
 
     max_iters = 20
 
+    ## 开启Agent Loop！！，最多iteration次 给他个20次
     for i in range(0, max_iters):
 
 
 
         response = client.models.generate_content(
             model='gemini-2.5-flash',
-            contents=userPrompt,
+            #这里的contents要用message
+            contents=message,
             config=config,
         )
         if verbose_flag:
@@ -103,6 +106,7 @@ def main():
             #final agent text message
 
             print(response.text)
+            break
 
 
 
