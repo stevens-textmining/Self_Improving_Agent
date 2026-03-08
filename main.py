@@ -20,7 +20,9 @@ def main():
     verbose_flag = False
 
     system_prompt = (
+
         """
+        1:
         You are a helpful AI coding agent.
 
         When a user asks a question or makes a request, make a function call plan. You can perform the following operations:
