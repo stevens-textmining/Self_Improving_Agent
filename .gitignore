@@ -20,3 +20,6 @@ wheels/
 .idea/
 .vscode/
 *.swp
+
+#Notes
+规划.md

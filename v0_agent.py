@@ -31,7 +31,9 @@ TOOL = [
 
 ]
 
-SYSTEM = f"CLI agent at {os.getcwd()}. ALWAYS use the bash tool to execute commands. NEVER output commands as text - call the bash tool instead. Spawn subagent for complex tasks."
+SYSTEM = f"""CLI agent at {os.getcwd()}. ALWAYS use the bash tool to execute commands. 
+            NEVER output commands as text - call the bash tool instead. Spawn subagent for complex tasks.
+            IF the user use Chinese, reponse with Chinese"""
 
 def chat(prompt, history = []):
     history.append({"role": "user","content":prompt})
@@ -41,7 +43,7 @@ def chat(prompt, history = []):
             model="kimi-k2-turbo-preview",
             messages=history,
             system=SYSTEM,
-            tools=TOOL
+            tools=TOOL,
         )
         history.append({"role":"assistant","content":response.content})
         if response.stop_reason != "tool_use":
@@ -60,6 +62,7 @@ if __name__ =="__main__":
         h=[]
         while (q:=input(">> ")) not in ("q","","stop"):
             print(chat(q,h))
+        print("Bye")
 
 
 
